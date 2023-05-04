@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row" *ngFor="let cartDetail of cartDetails">
+    <h3 class="mt-3">Order<span> #{{cartDetail.id}}</span></h3>
+    <p class="date font-sm">{{cartDetail.createdAt}}</p>
+    <div class="col-md-8">
+      <h4>Customer`s Cart</h4>
+      <div class="row p-3 shadow-sm rounded-3" *ngFor="let cartItem of cartDetail?.cartItems">
+        <div class="col-md-2">
+          <img [src]="cartItem.product?.imageCover" class="w-100" alt="">
+        </div>
+        <div class="col-md-10">
+          <div class="d-flex justify-content-between align-items-center">
+            <h4>{{cartItem?.product.title}}</h4>
+            <p>Quantity:{{cartItem?.count}}</p>
+            <p>Price:{{cartItem?.price | currency}}</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <i class="fa-solid fa-star mx-1 text-main"></i><span>{{cartItem?.product.ratingsAverage}}</span>
+            </div>
+            <p>Ratings Number : {{cartItem?.product.ratingsQuantity}}
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="row shadow-sm rounded-3 p-3">
+        <h4>Summary</h4>
+        <div class="col-md-6">
+          <p>Shipping price : {{cartDetail.shippingPrice}}</p>
+          <p>tax price : {{cartDetail.taxPrice}}</p>
+          <p>total price : {{cartDetail.totalOrderPrice}}</p>
+        </div>
+        <div class="col-md-6">
+          <p>Paid : {{cartDetail.isPaid}}</p>
+          <p>Date : {{cartDetail.paidAt}}</p>
+          <p>Delivered : {{cartDetail.isDelivered}}</p>
+          <p>payment Method : {{cartDetail.paymentMethodType}}</p>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-4 p-4 mb-0 shadow-sm rounded-3">
+      <h4>Customer</h4>
+      <div class="userDetail">
+        <p>Name : {{cartDetail.user?.name}}</p>
+        <div>
+          <i class="fa fa-envelope mb-3"></i>
+          <span class="ms-2">{{cartDetail.user?.email}}</span>
+        </div>
+      </div>
+      <div class="my-4">
+        <h4>Shipping Adress</h4>
+        <p>city : {{cartDetail.shippingAddress?.city}}</p>
+        <p>details : {{cartDetail.shippingAddress?.details}}</p>
+        <p>phone : {{cartDetail.shippingAddress?.phone}}</p>
+      </div>
+
+    </div>
+  </div>
+</div>

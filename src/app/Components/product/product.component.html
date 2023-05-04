@@ -1,0 +1,13 @@
+<div class="product p-3 overflow-hidden cursor-pointer">
+  <div [routerLink]="['/product/',product.id]">
+    <img [src]="product.imageCover" alt="" class="w-100">
+    <h6 class="text-main">{{product.category.name}}</h6>
+    <h4>{{product.title.split(" ").slice(0, 2).join(" ")}}</h4>
+    <div class="d-flex justify-content-between align-items-center">
+      <p>{{product.price | currency}}</p>
+      <p><span class="mx-1 text-main"><i class="fa-solid fa-star"></i></span>{{product.ratingsAverage}}</p>
+    </div>
+  </div>
+
+  <button (click)="productAddToCart(product.id)" class="btn bg-main text-white m-auto mt-2 d-block">Add to Cart</button>
+</div>

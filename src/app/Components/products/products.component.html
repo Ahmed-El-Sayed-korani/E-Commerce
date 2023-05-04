@@ -1,0 +1,8 @@
+<div class="row">
+  <div *ngFor="let product of products" class="col-md-3">
+    <div class="category cursor-pointer my-4">
+      <img [src]="product?.imageCover" style="height: 420px;" class="w-100" alt="">
+      <h4 class="text-center">{{product?.slug}}</h4>
+    </div>
+  </div>
+</div>

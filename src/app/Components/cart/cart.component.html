@@ -1,0 +1,34 @@
+<app-spinner></app-spinner>
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>Your Cart</h1>
+    <button class="btn btn-outline-danger" (click)=" removeCartItems()">Empty The Cart</button>
+
+  </div>
+  <div *ngFor="let product of cartProducts " class="row p-4 my-3 shadow-sm rounded-3">
+    <div class="col-md-1">
+      <img class="w-100" [src]="product.product.imageCover" alt="">
+    </div>
+    <div class="col-md-11">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h4>{{product.product.title}}</h4>
+          <p>{{product.price | currency}}</p>
+          <button class="btn text-danger" (click)=" removeItemFromCart(product.product.id)"><i
+              class="fa-regular fa-trash-can  me-2"></i>Remove</button>
+        </div>
+        <div class="d-flex align-items-center">
+          <button class="btn btn-outline-success"
+            (click)="updateProductQuantity(product.product.id,product.count+1)">+</button>
+          <span class="m-2">{{product.count}}</span>
+          <button class="btn btn-outline-danger"
+            (click)="updateProductQuantity(product.product.id,product.count-1)">-</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <button routerLink="/checkout/{{cartId}}" class="btn bg-main ms-auto d-block text-white my-2 px-3">Checkout</button>
+
+</div>

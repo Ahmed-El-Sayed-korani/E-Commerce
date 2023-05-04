@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" routerLink="home">
+      <img src="../../../assets/images/freshcart-logo.svg" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0" *ngIf="_AuthService.userToken">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="home" routerLinkActice="active">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="products" routerLinkActice="active">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="catagories" routerLinkActice="active">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="brands" routerLinkActice="active">Brands</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <i class="fa-brands fa-instagram mx-2 cursor-pointer"></i>
+          <i class="fa-brands fa-facebook mx-2 cursor-pointer"></i>
+          <i class="fa-brands fa-tiktok mx-2 cursor-pointer"></i>
+          <i class="fa-brands fa-twitter mx-2 cursor-pointer"></i>
+          <i class="fa-brands fa-linkedin mx-2 cursor-pointer"></i>
+          <i class="fa-brands fa-youtube mx-2 cursor-pointer"></i>
+        </li>
+
+      </ul>
+      <ul class="d-flex list-unstyled mt-3">
+        <li class="mx-2" *ngIf="!_AuthService.userToken">
+          <a routerLink="register" routerLinkActice="active">Register</a>
+        </li>
+        <li class="mx-2" *ngIf="!_AuthService.userToken">
+          <a routerLink="login" routerLinkActice="active">Login</a>
+        </li>
+        <li class="mx-2" *ngIf="_AuthService.userToken">
+          <a (click)="_AuthService.logout()" class="cursor-pointer">Logout</a>
+        </li>
+        <li class="nav-item position-relative" *ngIf="_AuthService.userToken">
+          <a class="nav-link" routerLink="cart" routerLinkActice="active">
+            <i class="fas fa-shopping-cart fa-lg text-main"></i>
+            <span class="position-absolute badge bg-main top-0">{{numOfCartItems}}</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

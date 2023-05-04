@@ -1,0 +1,9 @@
+<app-spinner></app-spinner>
+<div class="row">
+  <div *ngFor="let category of categories" class="col-md-3">
+    <div class="category cursor-pointer my-4">
+      <img [src]="category?.image" style="height: 300px;" class="w-100" alt="">
+      <h4 class="text-center">{{category?.name}}</h4>
+    </div>
+  </div>
+</div>

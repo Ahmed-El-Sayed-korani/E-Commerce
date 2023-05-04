@@ -1,0 +1,30 @@
+<div class="container">
+  <form (ngSubmit)="checkout(addressForm)" [formGroup]="addressForm" class="w-75 m-auto p-5">
+    <label for="details" class="my-2">Details :</label>
+    <input type="text" id="details" class="form-control" formControlName="details">
+    <div *ngIf="addressForm.get('details')?.touched && addressForm.get('details')?.status == 'INVALID'"
+      class="alert alert-danger">
+      <p *ngIf="addressForm.get('details')?.getError('required')">Your details is required</p>
+      <p *ngIf="addressForm.get('details')?.getError('minlength')">
+        Min Lenght is 3</p>
+      <p *ngIf="addressForm.get('details')?.getError('maxlength')">
+        Max Lenght is 20</p>
+    </div>
+    <label for="phone" class="my-2">Phone :</label>
+    <input type="text" id="phone" class="form-control" formControlName="phone">
+    <div *ngIf="addressForm.get('phone')?.touched && addressForm.get('phone')?.status == 'INVALID'"
+      class="alert alert-danger">
+      <p *ngIf="addressForm.get('phone')?.getError('required')">Phone is required</p>
+      <p *ngIf="addressForm.get('phone')?.getError('pattern')">Enter Vaild Egyptian Number</p>
+    </div>
+    <label for="city" class="my-2">City :</label>
+    <input type="text" id="city" class="form-control" formControlName="city">
+    <div *ngIf="addressForm.get('city')?.touched && addressForm.get('city')?.status == 'INVALID'"
+      class="alert alert-danger">
+      <p *ngIf="addressForm.get('city')?.getError('required')">Your city is required</p>
+    </div>
+    <button type="submit" class="btn bg-main m-auto d-block text-white px-3 my-2">Checkout</button>
+
+  </form>
+
+</div>
